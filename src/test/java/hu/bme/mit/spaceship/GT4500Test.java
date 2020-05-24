@@ -151,6 +151,21 @@ public class GT4500Test {
      verify(mockSecondary, times(0)).fire(1);
   }
 
+  @Test
+  public void fireTorpedo_Single_Three_SecondaryIsEmpty(){
+     // Arrange
+     ship.fireTorpedo(FiringMode.SINGLE);
+     when(mockPrimary.isEmpty()).thenReturn(true);
+     when(mockSecondary.isEmpty()).thenReturn(true);
+ 
+     // Act
+     ship.fireTorpedo(FiringMode.SINGLE);
+ 
+     // Verify
+     verify(mockPrimary, times(1)).fire(1);
+     verify(mockSecondary, times(0)).fire(1);
+  }
+
 
 
 }
